@@ -1,5 +1,6 @@
 const express = require('express')
 const User=require('../models/user')
+const Money=require('../models/money')
 const bcrypt=require('bcrypt')
 const passport=require('passport')
 const initializePassport=require('../passport-config')
@@ -16,9 +17,13 @@ async (id)=>{
 )
 
 
-router.get('/',checkAuthenticated, (req, res) => {
-    console.log(req.user)
-  res.render('home',{name: req.user[0].name})
+router.get('/',checkAuthenticated,async (req, res) => {
+   
+    const money=await Money.find({email:req.user[0].email})
+    
+  res.render('home',
+  {user: req.user[0],
+   money:money})
 })
 
 
@@ -27,7 +32,7 @@ router.get('/',checkAuthenticated, (req, res) => {
 
 router.get('/login',checkNotAuthenticated, (req, res) => {
     res.render('login')
-  })
+  }) 
 
 
   router.post('/register',checkNotAuthenticated, async (req,res)=>{
@@ -39,7 +44,13 @@ router.get('/login',checkNotAuthenticated, (req, res) => {
         email:req.body.email,
         password:hashedPassword
       })
-        const newUser=await  user.save()
+      const newUser=await  user.save()
+        const money=new Money({
+            email:req.body.email
+        })
+        
+        const newMoney=await money.save()
+        console.log(newMoney)
         res.redirect('/login')
     }
     catch{
@@ -60,7 +71,7 @@ router.get('/login',checkNotAuthenticated, (req, res) => {
 router.post('/login',checkNotAuthenticated,passport.authenticate('local',{
     successRedirect:'/',
     failureRedirect:'/login',
-    failureFlash:true,
+    failureFlash:true
     
 })
 )
@@ -74,10 +85,9 @@ function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return next()
     }
-  
     res.redirect('/login')
   }
-  
+
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return res.redirect('/')

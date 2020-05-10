@@ -11,6 +11,7 @@ const passport=require('passport')
 const methodOverride=require('method-override')
 
 const indexRouter = require('./routes/index')
+const borrowRouter = require('./routes/borrow')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -20,7 +21,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,                                           
     resave: false,
     saveUninitialized: false
   }))
@@ -35,5 +36,6 @@ db.on('error', error => console.error(error))
 db.once('open', () => console.log('Connected to Mongoose'))
 
 app.use('/', indexRouter)
+app.use('/borrow',borrowRouter)
 
 app.listen(process.env.PORT || 3000)

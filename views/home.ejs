@@ -1,6 +1,14 @@
-<h1>Home Page</h1>
-<h1>hello <%= name %> </h1> 
+<%- include('./partials/header.ejs') %>
+
+<h1>hello <%= user.email %> </h1>
 <form action="/logout?_method=DELETE" method="POST">
 
 <button type="submit">Log out</button>
 </form>
+<br><br>
+
+<h2>total Money you have:<%=money[0].totalMoney %></h2>
+<h2>Borrowed Money:<%=money[0].borrowedMoney %></h2>
+<h2>Lent money:<%=money[0].lentMoney %></h2>
+</form>
+
