@@ -15,9 +15,25 @@ router.get('/borrow',async(req,res)=>{
     catch{
         res.redirect('/')
     }
-   
     
+})
+
+router.put('/borrow',async(req,res)=>{
+    const num=req.body.borrow    
+    const user=await User.find({_id:req.user[0]._id})
+    const money=await Money.find({email:user[0].email})
+    money[0].borrowedMoney+=num
+    console.log(money[0].borrowedMoney)
+    try{
+    await money[0].save()
+    res.render('borrow',{money:money})
+    }
+    catch{
+        console.log('catchhhhh')
+        res.redirect('/borrow/borrow')
+    }
     
+
 })
 
 module.exports=router

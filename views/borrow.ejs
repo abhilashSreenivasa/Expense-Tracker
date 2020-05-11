@@ -1,1 +1,7 @@
-<h1>borrowed money:<%= money[0].email %></h1>
+<h1>borrowed money:<%= money[0].borrowedMoney %></h1>
+
+<form action="/borrow/borrow?_method=PUT" method="POST">
+<label>Amount(rs)</label>
+<input type="number" name="borrow" id="borrow" required>
+<button type="submit">Borrow</button>
+</form>
