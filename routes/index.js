@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+  }
+  
 const express = require('express')
 const User=require('../models/user')
 const Money=require('../models/money')
