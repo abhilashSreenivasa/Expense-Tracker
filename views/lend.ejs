@@ -1,0 +1,12 @@
+
+<%- include('./partials/header.ejs') %>
+
+<h1>lent money:<%= money[0].lentMoney %></h1>
+<% if(message!=undefined){ %>
+<%=message %>
+<% } %>
+<form action="/lend/lend?_method=PUT" method="POST">
+<label>Amount(rs)</label>
+<input type="number" name="lend" id="lend" required>
+<button type="submit">Lend</button>
+</form>
