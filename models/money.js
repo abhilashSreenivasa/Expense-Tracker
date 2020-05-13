@@ -19,6 +19,23 @@ const moneySchema=new mongoose.Schema({
         type:Number,
         required:true,
         default:0
-    }
+    },
+    borrowHistory:[{
+        from:{
+            type:String,
+            required:true,
+            default:'x'
+        },
+        description:{
+            type:String,
+            required:true,
+            default:'personal'
+        },
+        amount:{
+            type:Number,
+            require:true,
+            default:0
+        }
+    }]
 })
 module.exports=mongoose.model('Money',moneySchema)

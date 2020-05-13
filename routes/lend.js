@@ -3,7 +3,7 @@ const User=require('../models/user')
 const Money=require('../models/money')
 const router = express.Router()
 let message="";
-router.get('/lend',async(req,res)=>{
+router.get('/',async(req,res)=>{
     try{
         
         const user=await User.find({_id:req.user[0]._id})
@@ -20,7 +20,7 @@ router.get('/lend',async(req,res)=>{
     
 })
 
-router.put('/lend',async(req,res)=>{
+router.put('/',async(req,res)=>{
     try{
     const num=parseInt(req.body.lend+"")
     const user=await User.find({_id:req.user[0]._id})

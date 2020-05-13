@@ -1,0 +1,12 @@
+<%- include('./partials/header.ejs') %>
+<h3><%=money[0].totalMoney %></h3>
+<h3><%=money[0].borrowedMoney %></h3>
+ <% money[0].borrowHistory.forEach(transaction => { %>
+      <div> 
+          <h3><%= transaction.from  %></h3>
+        <h3><%=transaction.description  %></h3>
+        <h3><%=transaction.amount  %></h3>
+        <%-include("./partials/deleteForm",
+        {url: `/activity/${transaction._id}`}) %>
+      </div>
+  <% }) %>

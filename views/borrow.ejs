@@ -3,8 +3,21 @@
 
 <h1>borrowed money:<%= money[0].borrowedMoney %></h1>
 
-<form action="/borrow/borrow?_method=PUT" method="POST">
-<label>Amount(rs)</label>
-<input type="number" name="borrow" id="borrow" required>
+<form action="/borrow?_method=PUT" method="POST">
+    <div>
+        <label>Borrowed From</label>
+        <input type="text" name="from" id="from" required>
+    </div>
+
+    <div>
+        <label>Description</label>
+        <input type="text" name="description" id="description" required>
+    </div>
+
+    <div>
+        <label>Amount(rs)</label>
+        <input type="number" name="borrow" id="borrow" required>
+    </div>
+
 <button type="submit">Borrow</button>
 </form>

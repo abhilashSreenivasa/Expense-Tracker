@@ -12,6 +12,7 @@ const methodOverride=require('method-override')
 const indexRouter = require('./routes/index')
 const borrowRouter = require('./routes/borrow')
 const lendRouter=require('./routes/lend')
+const activityRouter=require('./routes/activity')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -30,6 +31,7 @@ app.use(session({
   app.use(methodOverride('_method'))
 
 const mongoose = require('mongoose')
+mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
@@ -38,5 +40,6 @@ db.once('open', () => console.log('Connected to Mongoose'))
 app.use('/', indexRouter)
 app.use('/borrow',borrowRouter)
 app.use('/lend',lendRouter)
+app.use('/activity',activityRouter)
 
 app.listen(process.env.PORT || 3000)
