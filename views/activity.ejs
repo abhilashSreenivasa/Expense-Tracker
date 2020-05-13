@@ -1,8 +1,11 @@
 <%- include('./partials/header.ejs') %>
-<h3><%=money[0].totalMoney %></h3>
-<h3><%=money[0].borrowedMoney %></h3>
+<%- include('./partials/logout.ejs') %>
+<h3>Total money:<%=money[0].totalMoney %></h3>
+<h3>Borrowed money<%=money[0].borrowedMoney %></h3>
+<h3>Lent money<%=money[0].LentMoney %></h3>
+<h1>Borrowed history</h1>
  <% money[0].borrowHistory.forEach(transaction => { %>
-      <div> 
+      <div>
           <h3><%= transaction.from  %></h3>
         <h3><%=transaction.description  %></h3>
         <h3><%=transaction.amount  %></h3>
@@ -10,3 +13,16 @@
         {url: `/activity/${transaction._id}`}) %>
       </div>
   <% }) %>
+
+  <h1>Lent history</h1>
+  <% money[0].lendHistory.forEach(transaction => { %>
+    <div>
+        <h3><%= transaction.to  %></h3>
+      <h3><%=transaction.description  %></h3>
+      <h3><%=transaction.amount  %></h3>
+      <%-include("./partials/deleteForm",
+      {url: `/activity/lend/${transaction._id}`}) %>
+    </div>
+<% }) %>
+
+

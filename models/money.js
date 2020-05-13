@@ -36,6 +36,24 @@ const moneySchema=new mongoose.Schema({
             require:true,
             default:0
         }
+    }],
+    lendHistory:[{
+        to:{
+            type:String,
+            required:true,
+            default:'x'
+        },
+        description:{
+            type:String,
+            required:true,
+            default:'personal'
+        },
+        amount:{
+            type:Number,
+            require:true,
+            default:0
+        }
     }]
+
 })
 module.exports=mongoose.model('Money',moneySchema)

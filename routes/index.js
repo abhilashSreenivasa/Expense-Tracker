@@ -30,6 +30,22 @@ router.get('/',checkAuthenticated,async (req, res) => {
    money:money})
 })
 
+router.put('/',async(req,res)=>{
+  try{
+  const money=await Money.find({email:req.user[0].email})
+  money[0].totalMoney+=parseInt(req.body.addMoney+"")
+  await money[0].save()
+  res.render('home',{
+    money:money,
+    user: req.user[0]
+  })
+  }
+  catch{
+    res.redirect('/')
+  }
+
+})
+
 
 
 

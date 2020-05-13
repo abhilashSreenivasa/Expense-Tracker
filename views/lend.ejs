@@ -1,13 +1,23 @@
 
 <%- include('./partials/header.ejs') %>
-
+<%- include('./partials/logout.ejs') %>
 <h1>lent money:<%= money[0].lentMoney %></h1>
 <% if(message!=undefined){ %>
     <%=message %>
     <% } %>
-    
 <form action="/lend?_method=PUT" method="POST">
-<label>Amount(rs)</label>
-<input type="number" name="lend" id="lend" required>
+    <div>
+        <label>lending to</label>
+        <input type="text" name="to" id="to" required>
+    </div>
+
+    <div>
+        <label>Description</label>
+        <input type="text" name="description" id="description" required>
+    </div>
+<div>
+     <label>Amount(rs)</label>
+     <input type="number" name="lend" id="lend" required>
+</div>
 <button type="submit">Lend</button>
 </form>

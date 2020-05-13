@@ -1,14 +1,16 @@
 <%- include('./partials/header.ejs') %>
+<%- include('./partials/logout.ejs') %>
+<h1>hello <%= user.name %> </h1>
 
-<h1>hello <%= user.email %> </h1>
-<form action="/logout?_method=DELETE" method="POST">
-
-<button type="submit">Log out</button>
-</form>
 <br><br>
 
 <h2>total Money you have:<%=money[0].totalMoney %></h2>
 <h2>Borrowed Money:<%=money[0].borrowedMoney %></h2>
 <h2>Lent money:<%=money[0].lentMoney %></h2>
+
+<form action="/?_method=PUT" method="POST">
+    <label>Add Money to total</label>
+    <input type="number" id="addMoney" name="addMoney">
+    <button type="submit">Add</button>
 </form>
 

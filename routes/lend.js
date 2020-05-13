@@ -28,6 +28,12 @@ router.put('/',async(req,res)=>{
     if(num<=money[0].totalMoney){
     money[0].lentMoney+=num
     money[0].totalMoney-=num
+    await money[0].lendHistory.push({
+        to:req.body.to,
+        description:req.body.description,
+        amount:req.body.lend
+    })
+
     await money[0].save()
     res.render('lend',{
         money:money,
@@ -41,9 +47,9 @@ router.put('/',async(req,res)=>{
     }
     }
     
-    catch{
-        console.log('catchhhhh')
-        res.redirect('/lend/lend')
+    catch(e){
+        console.error(e)
+        res.redirect('/lend')
     }
     
 
