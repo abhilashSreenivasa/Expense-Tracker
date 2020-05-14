@@ -21,6 +21,7 @@
   "dependencies": {
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.0",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",

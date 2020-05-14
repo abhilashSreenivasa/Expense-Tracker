@@ -58,6 +58,8 @@ router.get('/login',checkNotAuthenticated, (req, res) => {
   router.post('/register',checkNotAuthenticated, async (req,res)=>{
       
     try{
+       const duplicateUser=await User.find({email:req.body.email})
+       if(duplicateUser.length==0){
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
     const user = new User({
         name: req.body.name,
@@ -72,16 +74,22 @@ router.get('/login',checkNotAuthenticated, (req, res) => {
         const newMoney=await money.save()
         console.log(newMoney)
         res.redirect('/login')
+      }
+      else{
+        const message="Account already exists!"
+        res.render('register',{message:message})
+      }
     }
     catch{
-        console.log('failed')
+        
         res.redirect('/register')
     }
 
 })
 
   router.get('/register',checkNotAuthenticated, (req, res) => {
-    res.render('register')
+    const message=null
+    res.render('register',{message:message})
   })
 
 
