@@ -23,7 +23,7 @@
 <table>
 <tr >
   <th >Name</th>
-  <th >Description</th>
+  <th id="table-desc-borrow-head" >Description</th>
   <th >Amount</th>
   <th >Action</th>
 </tr>
@@ -31,7 +31,7 @@
  <% money[0].borrowHistory.forEach(transaction => { %>
       <tr>
           <td ><%= transaction.from  %></td>
-        <td>[<%=transaction.description  %>] </td>
+        <td id="table-desc-borrow"><%=transaction.description  %> </td>
         <td><%=transaction.amount%> (rs)</td>
        <td> <%-include("./partials/deleteForm",
         {url: `/activity/${transaction._id}`}) %></td>
@@ -45,14 +45,14 @@
   <table>
     <tr >
       <th >Name</th>
-      <th >Description</th>
+      <th id="table-desc-lend-head" >Description</th>
       <th >Amount</th>
       <th >Action</th>
     </tr>
   <% money[0].lendHistory.forEach(transaction => { %>
-    <r>
+    <tr>
         <td class="main-activity-detail-info"><%= transaction.to  %></td>
-      <td class="main-activity-detail-info">[<%=transaction.description  %>] </td>
+      <td id="table-desc-lend" class="main-activity-detail-info"><%=transaction.description  %> </td>
       <td class="main-activity-detail-info"><%=transaction.amount%> (rs)</td>
       <td><%-include("./partials/deleteForm",
       {url: `/activity/lend/${transaction._id}`}) %></td>

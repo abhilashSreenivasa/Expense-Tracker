@@ -6,26 +6,22 @@ const router = express.Router()
 
 router.get('/',async(req,res)=>{
     try{
-        
         const user=await User.find({_id:req.user[0]._id})
-    
         const money=await Money.find({email:user[0].email})
         res.render('borrow',{money:money})
     }
     catch{
         res.redirect('/')
     }
-    
 })
 
 router.put('/',async(req,res)=>{
-   
-   
+
     try{
     const num=parseInt(req.body.borrow+"")
     const user=await User.find({_id:req.user[0]._id})
     const money=await Money.find({email:user[0].email})
-    
+
 
     money[0].borrowedMoney+=num
     money[0].totalMoney+=num
@@ -34,15 +30,13 @@ router.put('/',async(req,res)=>{
         description:req.body.description,
         amount:req.body.borrow
     })
-    
-    
     await money[0].save()
     res.render('borrow',{money:money})
     }
-    
+
     catch{
-        console.log('catchhhhh')
-        res.redirect('/borrow/borrow')
+        
+        res.redirect('/borrow')
     }
     
 

@@ -7,14 +7,11 @@ html,body{
   background-size: contain; 
 background-repeat: no-repeat;
 min-height:100%;
-max-height: 100%;
-width:100%;
-
-
-
-  
-
+min-width:100%;
+max-width: 100%;
+    overflow-x: hidden;
 }
+
 
 .main{
     display: flex;
@@ -274,12 +271,14 @@ table{
     
    max-width: 60%;
     align-items: center;
+    table-layout: fixed;
 }
  th, td {
      
     border: 1px solid black;
    border-collapse: collapse;
-  }
+   word-wrap: break-word;
+ }
   th, td {
     padding: 5px;
     text-align: left;
@@ -287,4 +286,81 @@ table{
   tr{
     background-color: white;
      display: table-row;
+  }
+
+  .form-field-input-phone{
+      display: none;
+  }
+
+@media only screen and (max-width: 600px) {
+    body{
+        min-width:100%;
+        font-size:10px;
+    }
+    .activity-main {
+      flex-direction: column;
+    }
+    .main-text-left{
+        min-width:100%;
+    }
+    .main-right{
+        min-width:100%;
+        align-items:center;
+        justify-content: center;
+    }
+    table{
+        max-width:100%;
+    }
+    th, td {
+        padding: 1px;
+        text-align: center;
+      }
+      .nav-link{
+          padding:5px 7px;
+          font-size: 12px;
+      }
+      .nav-ul{
+          padding:0px;
+      }
+      #title-link{
+          font-size: 15px;
+      }
+      #logout-btn{
+          font-size:10px;
+      }
+      .main-text-key{
+          font-size:15px;
+
+      }
+      .main-text-value{
+          font-size: 15px;
+      }
+      .main-hello{
+        font-size: 13px;
+    }
+    .main-info{
+        width:80%;
+        padding:5px;
+    }
+    .form{
+    padding: 5px 5px 3px 5px;
+    }
+   
+    #table-desc-lend{
+        display:none;
+    }
+    #table-desc-lend-head{
+        display:none;
+    }
+    #table-desc-borrow{
+        display:none;
+    }
+    #table-desc-borrow-head{
+        display:none;
+    }
+    .main-login-title{
+        font-size: 19px;
+    }
+  
+
   }
