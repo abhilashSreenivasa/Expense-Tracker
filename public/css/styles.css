@@ -288,9 +288,3 @@ table{
     background-color: white;
      display: table-row;
   }
-
-  #wrapper {
-    margin-left:auto;
-    margin-right:auto;
-    min-width:960px;
-}
