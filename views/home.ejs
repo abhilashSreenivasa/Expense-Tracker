@@ -1,16 +1,30 @@
 <%- include('./partials/header.ejs') %>
-<%- include('./partials/logout.ejs') %>
-<h1>hello <%= user.name %> </h1>
+<div class="main">
+<div class="main-hello">Hello <%= user.name %> !</div>
 
-<br><br>
+<div class="main-info">
+<div class="main-text">
+    <div class="main-text-key">Total money(rs) : </div>
+    <div class="main-text-value"><%=money[0].totalMoney %></div>
+</div>
+<div class="main-text">
+    <div class="main-text-key">Borrowed money(rs) : </div>
+    <div class="main-text-value"><%=money[0].borrowedMoney %></div>
+</div>
+<div class="main-text">
+    <div class="main-text-key">Lent money(rs) : </div>
+    <div class="main-text-value"><%=money[0].lentMoney %></div>
+</div>
 
-<h2>total Money you have:<%=money[0].totalMoney %></h2>
-<h2>Borrowed Money:<%=money[0].borrowedMoney %></h2>
-<h2>Lent money:<%=money[0].lentMoney %></h2>
-
-<form action="/?_method=PUT" method="POST">
-    <label>Add Money to total</label>
-    <input type="number" id="addMoney" name="addMoney">
-    <button type="submit">Add</button>
+<form class="form" action="/?_method=PUT" method="POST">
+    <div class='form-field'>
+        <label id="add-money" class="form-field-label">Add money to total</label>
+        <input  class="form-field-input" type="number" id="addMoney" name="addMoney">
+    </div>
+    <div class="form-field">
+        <button class="form-field-btn" type="submit">Add</button>
+    </div>
 </form>
+</div>
+</div>
 

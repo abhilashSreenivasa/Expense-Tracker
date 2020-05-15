@@ -1,28 +1,66 @@
 <%- include('./partials/header.ejs') %>
-<%- include('./partials/logout.ejs') %>
-<h3>Total money:<%=money[0].totalMoney %></h3>
-<h3>Borrowed money<%=money[0].borrowedMoney %></h3>
-<h3>Lent money<%=money[0].LentMoney %></h3>
-<h1>Borrowed history</h1>
- <% money[0].borrowHistory.forEach(transaction => { %>
-      <div>
-          <h3><%= transaction.from  %></h3>
-        <h3><%=transaction.description  %></h3>
-        <h3><%=transaction.amount  %></h3>
-        <%-include("./partials/deleteForm",
-        {url: `/activity/${transaction._id}`}) %>
-      </div>
-  <% }) %>
 
-  <h1>Lent history</h1>
+<div class="activity-main">
+
+<div class="main-text-left">
+<div id="main-text-activity" class="main-text">
+  <div class="main-text-key">Total money </div>
+  <div class="main-text-value"><%=money[0].totalMoney %></div>
+</div>
+<div id="main-text-activity" class="main-text">
+  <div class="main-text-key">Borrowed money</div>
+  <div class="main-text-value"> <%=money[0].borrowedMoney %></div>
+</div>
+<div id="main-text-activity" class="main-text">
+  <div class="main-text-key">Lent money</div>
+  <div class="main-text-value"> <%=money[0].lentMoney %></div>
+</div>
+
+</div>
+
+<div class="main-right">
+<div class="main-hello">Borrowed history</div>
+<table>
+<tr >
+  <th >Name</th>
+  <th >Description</th>
+  <th >Amount</th>
+  <th >Action</th>
+</tr>
+
+ <% money[0].borrowHistory.forEach(transaction => { %>
+      <tr>
+          <td ><%= transaction.from  %></td>
+        <td>[<%=transaction.description  %>] </td>
+        <td><%=transaction.amount%> (rs)</td>
+       <td> <%-include("./partials/deleteForm",
+        {url: `/activity/${transaction._id}`}) %></td>
+          </tr>
+  <% }) %>
+ </table>
+
+
+
+  <div class="main-hello">Lent history</div>
+  <table>
+    <tr >
+      <th >Name</th>
+      <th >Description</th>
+      <th >Amount</th>
+      <th >Action</th>
+    </tr>
   <% money[0].lendHistory.forEach(transaction => { %>
-    <div>
-        <h3><%= transaction.to  %></h3>
-      <h3><%=transaction.description  %></h3>
-      <h3><%=transaction.amount  %></h3>
-      <%-include("./partials/deleteForm",
-      {url: `/activity/lend/${transaction._id}`}) %>
-    </div>
+    <r>
+        <td class="main-activity-detail-info"><%= transaction.to  %></td>
+      <td class="main-activity-detail-info">[<%=transaction.description  %>] </td>
+      <td class="main-activity-detail-info"><%=transaction.amount%> (rs)</td>
+      <td><%-include("./partials/deleteForm",
+      {url: `/activity/lend/${transaction._id}`}) %></td>
+    </tr>
 <% }) %>
+
+  </table>
+</div>
+  </div>
 
 

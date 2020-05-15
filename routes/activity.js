@@ -63,7 +63,7 @@ router.delete('/lend/:id',async(req,res)=>{
     const money=await Money.find({email:user[0].email})
     const deleted_number=await number[0].lendHistory.find(o=>o._id==req.params.id)
     money[0].totalMoney+=deleted_number.amount
-    money[0].lendMoney-=deleted_number.amount
+    money[0].lentMoney-=deleted_number.amount
     await money[0].save()
         res.render('activity',{money:money})
     }

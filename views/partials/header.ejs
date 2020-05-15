@@ -1,16 +1,17 @@
-<div class="head">
-    <header>
+
+    <header class="head">
         <div class="title">
             <a id="title-link" href="/">Expense tracker</a>
+            <%- include('./logout.ejs') %>
         </div>
-        <nav>
-            <ul>
-                <li><a class="nav-link" href='/'>Home</a></li>
-                <li><a class="nav-link" href='/activity'>Activity</a></li>
-                <li><a class="nav-link" href='/lend'>Lend Money</a></li>
-                <li><a class="nav-link" href='/borrow'>Borrow Money</a></li>
+        <nav class="nav">
+            <ul class="nav-ul">
+                <li class="nav-link" id="nav-link-1"><a class="nav-link-text"  href='/'>Home</a></li>
+                <li class="nav-link"><a class="nav-link-text"  href='/activity'>Activity</a></li>
+                <li class="nav-link"><a class="nav-link-text"  href='/lend'>Lend</a></li>
+                <li class="nav-link"><a class="nav-link-text"  href='/borrow'>Borrow</a></li>
             </ul>
         </nav>
     </header>
-    </div>
+  
     
