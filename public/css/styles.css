@@ -3,7 +3,7 @@ html,body{
     margin: 0px;
   padding: 0px;
   padding-bottom: 10px;
-  background-image: linear-gradient( rgb(248, 247, 247),rgb(146, 135, 135));
+  background-color:rgb(238, 219, 165);
   background-size: contain; 
 background-repeat: no-repeat;
 min-height:100%;
@@ -26,11 +26,13 @@ max-width: 100%;
     align-items:center;
     justify-content: center;
     margin:100px;
-    -webkit-box-shadow: 0 0 35px black;
-        box-shadow: 0 0 35px black;
+   
+    -webkit-box-shadow: 0 0 35px white;
+        box-shadow: 0 0 35px white;
     padding:25px;
-    background-color:white;
+    background-color:rgb(43, 40, 40);
     border-radius: 10px;
+    color:white
     
 }
 .main-login-title{
@@ -79,7 +81,7 @@ max-width: 100%;
     
 }
 .anchor-link-text{
-    color:rgb(3, 3, 107);
+    color:rgb(238, 219, 165);
 }
 .main-login-error{
     display: flex;
@@ -157,12 +159,13 @@ max-width: 100%;
     flex-direction: column;
     align-items:center;
     justify-content: center;
-    -webkit-box-shadow: 0 0 35px black;
-    box-shadow: 0 0 35px black;
+    -webkit-box-shadow: 0 0 35px white;
+    box-shadow: 0 0 35px white;
     padding:25px;
-    background-color:white;
+    background-color:rgb(43, 40, 40);
     border-radius: 10px;
     width:40%;
+    color:white;
 
 }
 .main-hello{
@@ -182,7 +185,7 @@ max-width: 100%;
 }
 .main-text-value{
     font-size:19px;
-    color:rgb(37, 78, 38);
+    color:rgb(6, 190, 9);
 }
 .main-text-value{
     animation: blinker 3s linear infinite;
@@ -194,7 +197,7 @@ max-width: 100%;
   }
   
   @keyframes blinker {
-    70% {
+    50% {
       opacity: 0;
     }
   }
@@ -291,6 +294,20 @@ table{
   .form-field-input-phone{
       display: none;
   }
+  #footer{
+      display: flex;
+      background-color:rgb(43, 40, 40) ;
+      align-items: center;
+      justify-content: space-around;
+      color: white;
+    position:fixed;
+    bottom:0;
+    left:0;
+    height:50px;
+    width:100%;
+    font-size:12px;
+    padding:0px 5px;
+   }
 
 @media only screen and (max-width: 600px) {
     body{
@@ -316,8 +333,8 @@ table{
         text-align: center;
       }
       .nav-link{
-          padding:5px 7px;
-          font-size: 12px;
+          padding:7px 9px;
+          font-size: 15px;
       }
       .nav-ul{
           padding:0px;
@@ -360,6 +377,18 @@ table{
     }
     .main-login-title{
         font-size: 19px;
+    }
+    #footer{
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        height:100px;
+        font-size:8px;
+        
+
+    }
+    .footer-content{
+        padding:5px 0px;
     }
   
 
