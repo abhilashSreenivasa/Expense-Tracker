@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/abhilashSreenivasa/Expense-Tracker#readme",
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.5.0",
     "ejs": "^3.0.2",
